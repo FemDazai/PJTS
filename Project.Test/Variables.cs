@@ -11,7 +11,6 @@ namespace Project.Test_
     {
         public static int SolveFormula(int a, int b)
         {
-          
             if (a == b)
             {
                 throw new ArgumentException("a==b");
