@@ -9,4 +9,5 @@ Console.WriteLine (Cycles.TheSumOfNumbersInTheRangeIsDivisibleBy7( 10,34));
 Console.WriteLine (Cycles.OutputTheNumberNOfTheFibonacciSeries(7));
 Console.WriteLine (Cycles.FindTheGreatestCommonDivisor(6,9));
 Console.WriteLine (Cycles.FindTheAmountOfOddDigitsOfANumber(13));    
-Console.WriteLine (Cycles.OutputTheNumberInReverseOrder(1234));    
+Console.WriteLine (Cycles.FindMirrorNumberOfA(1387)); 
+

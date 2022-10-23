@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Project.Test_
 {
-    public static  class BranchStructures
+    public static class BranchStructures
     {
-        public static int SolveArithmeticExamplesByCondition(int a, int b)
+        public static int SolveArithmeticExamplesByCondition(int a, int b)//BS1
         {
             int result;
             if (a > b)
@@ -25,40 +25,86 @@ namespace Project.Test_
             }
             return result;
         }
-        public static string FindQuadrantGivenPoint(int x, int y)
+
+        public static string FindQuadrantGivenPoint(int x, int y)//BS2
         {
             string result;
             if (x == 0 && y == 0)
             {
                 throw new ArgumentException("x = 0 && y = 0");
             }
+            else if (x > 0 && y > 0)
+                result = ("Точка принадлежит первой четверти ");
 
-              else  if (x > 0 && y > 0)
-                    result = ("Точка принадлежит первой четверти ");
-
-                else if (x < 0 && y > 0)
-                {
-                    result = ("Точка принадлежит второй четверти ");
-                }
-                else if (x < 0 && y < 0)
-                {
-                    result = ("Точка принадлежит третьей четверти ");
-                }
-                else
-                {
-                    result = ("Точка принадлежит четвертой четверти ");
-                }
-
-                return result;
-            
+            else if (x < 0 && y > 0)
+            {
+                result = ("Точка принадлежит второй четверти ");
+            }
+            else if (x < 0 && y < 0)
+            {
+                result = ("Точка принадлежит третьей четверти ");
+            }
+            else
+            {
+                result = ("Точка принадлежит четвертой четверти ");
+            }
+            return result;
         }
-        public static string OutputVerbalNotationOfTheNumber(int a)
+
+        public static int[] OutputABCInAscendingOrder(int[] array)//BS3
         {
-            string result="";
+            int[] arr = new int[3];
+            for (int i = 0; i < 2; i++)
+            {
+                int IndexOfMin = i;
+                for (int j = i + 1; j < 3; j++)
+                {
+                    if (array[j] < array[IndexOfMin])
+                    {
+                        IndexOfMin = j;
+                    }
+                }
+                int temp = array[IndexOfMin];
+                array[IndexOfMin] = array[i];
+                array[i] = temp;
+            }
+            if (array.Length > 3)
+            {
+                throw new ArgumentException("array.Length > 3");
+            }
+            return array;
+        }
+
+        public static string DeriveAQuadraticEquation(int a, int b,int c)//BS4
+        {
+            double X1 = 0;
+            double X2 = 0;
+            double D = Math.Pow(b, 2) - 4 * a * c;
+            if (D < 0)
+            {
+                throw new ArgumentException ("Квадратное уравнение не имеет корней");
+
+            }
+            else if (D == 0)
+            {
+                X1 = -b / (2 * a);
+                X2 = X1;
+            }
+            else
+            {
+                X1 = (-b + Math.Sqrt(D)) / (2 * a);
+                X2 = (-b - Math.Sqrt(D)) / (2 * a);
+            }
+            return ($"X1={X1};X2={X2}");
+        }
+
+        public static string OutputVerbalNotationOfTheNumber(int a)//BS5
+        {
+            string result = "";
             string tens = "";
             string units = "";
             int cons = a / 10;
-            if ( cons==1)
+            if (cons == 1)
             {
                 switch (a % 10)
                 {
@@ -104,11 +150,10 @@ namespace Project.Test_
                         break;
                 }
             }
-            else   
+            else
             {
                 switch (cons)
                 {
-
                     case 2:
                         tens = ("двадцать ");
                         break;
@@ -135,7 +180,6 @@ namespace Project.Test_
                         break;
                     default:
                         break;
-
 
                 }
                 switch (a % 10)
@@ -168,17 +212,14 @@ namespace Project.Test_
                         units = ("девять");
                         break;
                 }
-
             }
             result = tens + units;
             if (a > 99)
             {
                 throw new ArgumentException("a>99");
             }
-
-            return result ;
-        } 
-                 
-    }
-    
+            return result;
+        }
+       
+    }        
 }

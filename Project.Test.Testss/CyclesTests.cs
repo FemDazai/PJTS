@@ -17,15 +17,20 @@ namespace Project.Test.Testss
         {
             int actual = Cycles.RaiseANumberToAPower(a, b);
             Assert.AreEqual(expected, actual);
-
         }
 
         [TestCase(2,-2)] //negativTestC1
-        public void RaiseANumberToAPower_WhenTheNumberBNegative_SholdThrowArgumentException(int a, int b)
+        public void RaiseANumberToAPower_WhenTheNumberBNegative_ShouldThrowArgumentException(int a, int b)
         {
             Assert.Throws<ArgumentException>(() => Cycles.RaiseANumberToAPower(a, b));
         }
 
+        [TestCase(200, new int[] {  200, 400,  600,  800, 1000 })] //positivTestC2
+        public void GetNumbersDivisionByATest(int numberA, int[] expected)
+        {
+            int[] actual = Cycles.GetNumbersDivisionByA(numberA);
+            Assert.AreEqual(actual, expected);
+        }
 
         [TestCase(2, 1)] //positivTestC3
         [TestCase(25,4)]
@@ -62,7 +67,7 @@ namespace Project.Test.Testss
         }
 
         [TestCase(2, 2)] //negativTestC5
-        public void TheSumOfNumbersInTheRangeIsDivisibleBy7_WhenAIsEqualB_SholdThrowArgumentException(int a, int b)
+        public void TheSumOfNumbersInTheRangeIsDivisibleBy7_WhenAIsEqualB_ShouldThrowArgumentException(int a, int b)
         {
             Assert.Throws<ArgumentException>(() => Cycles.TheSumOfNumbersInTheRangeIsDivisibleBy7(a, b));
         }
@@ -79,7 +84,7 @@ namespace Project.Test.Testss
         }
 
         [TestCase(-5)] //negativTestC6
-        public void OutputTheNumberNOfTheFibonacciSeries_WhenNIsNegativeNumber_SholdThrowArgumentException(int N)
+        public void OutputTheNumberNOfTheFibonacciSeries_WhenNIsNegativeNumber_ShouldThrowArgumentException(int N)
         {
             Assert.Throws<ArgumentException>(() => Cycles.OutputTheNumberNOfTheFibonacciSeries(N));
         }
@@ -94,8 +99,15 @@ namespace Project.Test.Testss
 
         }
 
+        [TestCase(125, 5)]//positivTest8
+        public void FindNumberTest(int GiveNumber, int expected)
+        {
+            int actual = Cycles.FindNumber(GiveNumber);
+            Assert.AreEqual(expected, actual);
+        }
+
         [TestCase(776, 2)] //positivTest9
-        [TestCase(1578 , 3)]
+        [TestCase(1578, 3)]
 
         public void FindTheAmountOfOddDigitsOfANumber(int a, int expected)
         {
@@ -103,5 +115,31 @@ namespace Project.Test.Testss
             Assert.AreEqual(expected, actual);
 
         }
+
+        [TestCase(77698, 89677)] //positivTestC10
+        [TestCase(2000, 2)]
+
+        public void FindMirrorNumberOfA(int a, int expected)
+        {
+            int actual = Cycles.FindMirrorNumberOfA(a);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase(211, 222, new int[] { 212, 214, 216, 218, 220,221,222})] //positivTestC11
+        public void FindNSumEvenNumbersMoreThanOddTest(int number1, int number2, int[] expected)
+        {
+            int[] actual = Cycles.FindNSumEvenNumbersMoreThanOdd(number1, number2);
+            Assert.AreEqual(actual, expected);
+        }
+
+        [TestCase(34724, 4029, "Да")]//positivTestC12
+        [TestCase(2475, 3139, "Нет")]
+
+        public void WriteValueTest(int number1, int number2, string expected)
+        {
+            string actual = Cycles.WriteValue(number1, number2);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
+
